@@ -1,0 +1,16 @@
+{
+    "name":"To-Do list",
+    "short_name": "to-Do",
+    "description": "Una aplicaion de lista de tareas simple, efectiva y para toda la familia",
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#3300ffff",
+     "icons":[
+        {
+        "src":"/icons/icon192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+        }
+    ]   
+}

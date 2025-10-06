@@ -1,0 +1,533 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Asegura que la altura sea 100% de la ventana */
+  width: 100%;
+}
+
+/* src/pages/Auth.css */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Fondo completamente negro (o muy oscuro) */
+  background: #000000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.auth-card {
+  /* Mantenemos el fondo blanco de la tarjeta para buen contraste */
+  background: rgb(207, 207, 207);
+  padding: 2.5rem;
+  border-radius: 12px;
+  /* La sombra es más sutil en un fondo negro */
+  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3); 
+  width: 100%;
+  max-width: 420px;
+  backdrop-filter: blur(10px);
+}
+
+.auth-card h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+/* Color de enfoque de input en rojo */
+.form-group input:focus {
+  outline: none;
+  border-color: #d32f2f; /* Rojo vibrante */
+  background: white;
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.15);
+}
+
+.form-group input::placeholder {
+  color: #a0a0a0;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 14px;
+  /* Degradado en un solo tono rojo fuerte */
+  background: linear-gradient(135deg, #d32f2f 0%, #900d0d 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.auth-button:hover {
+  transform: translateY(-2px);
+  /* Sombra roja para el efecto hover */
+  box-shadow: 0 5px 15px rgba(211, 47, 47, 0.6); 
+}
+
+.auth-button:active {
+  transform: translateY(0);
+}
+
+.auth-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.error-message {
+  background: #fee;
+  color: #d63031;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  text-align: center;
+  border-left: 4px solid #d63031;
+  font-size: 14px;
+}
+
+.auth-link {
+  text-align: center;
+  margin-top: 2rem;
+  color: #666;
+  font-size: 14px;
+}
+
+.auth-link a {
+  /* Hipervínculo en rojo vibrante */
+  color: #d32f2f;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.auth-link a:hover {
+  /* Hover en un rojo más oscuro */
+  color: #900d0d;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 2rem 1.5rem;
+    margin: 10px;
+  }
+  
+  .auth-card h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+/* src/styles/Tasks.css (Diseño Moderno Oscuro/Rojo) */
+
+/* ==================================== */
+/* 1. Base y Contenedor Principal */
+/* ==================================== */
+
+.wrap {
+  min-height: 100vh;
+  background-color: #0d0d0d; 
+  color: #f1f1f1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ==================================== */
+/* 2. Barra Superior (Topbar) */
+/* ==================================== */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #1a1a1a;
+  border-bottom: 2px solid #d32f2f;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.app-title {
+  font-size: 1.8rem;
+  color: #d32f2f;
+  margin: 0;
+  font-weight: 700;
+}
+
+/* ==================================== */
+/* 3. Botones Generales */
+/* ==================================== */
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #d32f2f;
+  color: white;
+}
+
+.btn:hover {
+  background-color: #900d0d;
+  transform: translateY(-1px);
+}
+
+.btn-logout {
+  background-color: #333; /* Más discreto */
+}
+
+.btn-logout:hover {
+  background-color: #555;
+  color: #d32f2f;
+}
+
+/* ==================================== */
+/* 4. Controles, Stats y Formulario */
+/* ==================================== */
+
+.controls-and-stats {
+  display: grid;
+  grid-template-columns: 1fr 300px; /* Formulario ancho, Stats fijas */
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* Formulario de Añadir (Compacto) */
+.add-compact {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.input-title, .input-desc {
+  padding: 12px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #222;
+  color: #f1f1f1;
+  resize: none;
+}
+
+.input-title:focus, .input-desc:focus {
+  outline: none;
+  border-color: #d32f2f;
+  box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.3);
+}
+
+.btn-add {
+  width: 100%;
+}
+
+/* Tarjeta de Estadísticas */
+.stats-card {
+  padding: 25px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  align-self: start;
+}
+
+.stats-card h2 {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #d32f2f;
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 10px 5px;
+  border-radius: 6px;
+  background-color: #222;
+}
+
+.stat-item span {
+  display: block;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.stat-item strong {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.stat-item.pending strong {
+  color: #d32f2f; /* Resaltar Pendientes */
+}
+
+/* Barra de Herramientas (Búsqueda y Filtros) */
+.toolbar-compact {
+  grid-column: 1 / 3; /* Ocupa ambas columnas */
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 15px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.input-search {
+  flex-grow: 1;
+  padding: 10px 15px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background-color: #222;
+  color: #f1f1f1;
+}
+
+.filters-group {
+  display: flex;
+  gap: 5px;
+}
+
+.btn-filter {
+  padding: 8px 15px;
+  border: 1px solid #444;
+  border-radius: 20px;
+  background-color: #222;
+  color: #aaa;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-filter:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.btn-filter.active {
+  background-color: #d32f2f;
+  color: white;
+  border-color: #d32f2f;
+  font-weight: 600;
+}
+
+
+/* ==================================== */
+/* 5. Lista de Tareas */
+/* ==================================== */
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, border-left 0.3s ease;
+}
+
+.task-item:hover {
+  background-color: #252525;
+}
+
+/* Tarea Completada */
+.task-item.done {
+  background-color: #151515;
+  opacity: 0.8;
+  border-left: 5px solid #008000;
+}
+
+/* Checkbox */
+.task-check-label {
+  margin-right: 15px;
+}
+
+.task-check-label input[type="checkbox"] {
+  transform: scale(1.4);
+  accent-color: #d32f2f;
+}
+
+.task-info {
+  flex-grow: 1;
+  margin-right: 20px;
+}
+
+.task-title {
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.task-item.done .task-title {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.task-description {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-bottom: 0;
+}
+
+/* Acciones de Tarea (Botones Ícono) */
+.task-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.icon-btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.delete-btn {
+  color: #d32f2f; /* Botón Borrar en rojo */
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+  color: white;
+}
+
+/* Formulario de Edición en Línea */
+.task-edit-form {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-right: 20px;
+}
+
+.edit-input {
+  padding: 8px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background-color: #333;
+  color: #f1f1f1;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.btn-save {
+  background-color: #008000; /* Verde para guardar */
+}
+
+.btn-save:hover {
+  background-color: #006400;
+}
+
+.btn-cancel {
+  background-color: #444;
+}
+
+.btn-cancel:hover {
+  background-color: #666;
+}
+
+/* Mensajes */
+.loading-message, .empty-message {
+  text-align: center;
+  color: #aaa;
+  padding: 40px;
+  font-size: 1.2rem;
+  border: 1px dashed #333;
+  border-radius: 8px;
+  margin: 20px auto;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .controls-and-stats {
+    grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+  }
+  .toolbar-compact {
+    grid-column: 1 / 2;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filters-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    padding: 15px 15px;
+  }
+  .task-item {
+    flex-wrap: wrap;
+  }
+  .task-info {
+    flex-basis: 100%;
+    margin-bottom: 10px;
+  }
+  .task-actions {
+    margin-left: auto;
+  }
+}
