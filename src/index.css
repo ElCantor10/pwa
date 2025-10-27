@@ -531,3 +531,14 @@ html, body {
     margin-left: auto;
   }
 }
+
+
+/* Select tareas status */
+.status-select{
+  width: 160px;
+  border: 1px solid #900d0d;
+  background: #151515;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 8px;
+}

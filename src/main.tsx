@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
          <Route path="/register" element={<Register />} /> 
         {/* Protegida */}
         <Route 
-          path="/dashboard*" 
+          path="/dashboard/*" 
           element={
             <ProtectedRoute>
               <Dashboard/>
