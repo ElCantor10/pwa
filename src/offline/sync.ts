@@ -1,5 +1,5 @@
 import { api } from "../api";
-import { getOutbox, clearOutbox, setMapping, getMapping, putTaskLocal, removeTaskLocal, db } from "./db";
+import { getOutbox, setMapping, getMapping, removeTaskLocal, db } from "./db";
 
 // Variable para evitar sincronizaciones simultáneas
 let isSyncing = false;
@@ -59,7 +59,7 @@ export async function syncNow() {
                         processedClientIds.add(op.clientId);
                     }
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.error(`Error syncing operation ${op.id}:`, error);
                 
                 // Si es error 409 (conflicto) o 400 (bad request), probablemente es duplicado
@@ -82,7 +82,7 @@ export async function syncNow() {
             
             console.log(`Synced ${successfulOps.length} operations`);
         }
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error during sync process:', error);
     } finally {
         isSyncing = false;

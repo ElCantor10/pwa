@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { api, setAuth } from "../api";
 import {
-  cacheTasks,  // ← CON S
+  cacheTasks,
   getAllTasksLocal,
   putTaskLocal,
   removeTaskLocal,
@@ -15,7 +15,7 @@ type Task = {
   title: string;
   description?: string;
   status: "Pendiente" | "En Progreso" | "Completada";
-  clienteId?: string;
+  clientId?: string; // ← CORREGIDO: clienteId → clientId
   createdAt?: string;
   deleted?: boolean;
 };
@@ -33,7 +33,7 @@ function normalizeTask(x: any): Task {
       x?.status === "Pendiente"
         ? x.status
         : "Pendiente",
-    clienteId: x?.clienteId,
+    clientId: x?.clientId, // ← CORREGIDO: clienteId → clientId
     createdAt: x?.createdAt,
     deleted: !!x?.deleted,
   };
@@ -96,9 +96,9 @@ export default function Dashboard() {
     const desc = description.trim();
     if (!t) return;
 
-    const clienteId = crypto.randomUUID();
+    const clientId = crypto.randomUUID(); // ← CORREGIDO
     const localTask = normalizeTask({
-      id: clienteId,
+      id: clientId, // ← CORREGIDO
       title: t,
       description: desc,
       status: "Pendiente",
@@ -111,9 +111,9 @@ export default function Dashboard() {
 
     if (!navigator.onLine) {
       const op: OutboxOp = {
-        id: "op-" + clienteId,
+        id: "op-" + clientId, // ← CORREGIDO
         op: "create",
-        clienteId,
+        clientId, // ← CORREGIDO: clienteId → clientId
         data: localTask,
         ts: Date.now(),
       };
@@ -127,13 +127,13 @@ export default function Dashboard() {
         description: desc 
       }); 
       const created = normalizeTask(data?.task ?? data);
-      setTasks((prev) => prev.map((x) => (x._id === clienteId ? created : x)));
+      setTasks((prev) => prev.map((x) => (x._id === clientId ? created : x))); // ← CORREGIDO
       await putTaskLocal(created);
     } catch {
       const op: OutboxOp = {
-        id: "po-" + clienteId,
+        id: "po-" + clientId, // ← CORREGIDO
         op: "create",
-        clienteId,
+        clientId, // ← CORREGIDO: clienteId → clientId
         data: localTask,
         ts: Date.now(),
       };
@@ -168,7 +168,7 @@ export default function Dashboard() {
       await queue({
         id: "upd-" + taskId,
         op: "update",
-        clienteId: taskId,
+        clientId: taskId, // ← CORREGIDO: clienteId → clientId
         data: { title: newTitle, description: newDesc },
         ts: Date.now(),
       } as OutboxOp);
@@ -201,7 +201,7 @@ export default function Dashboard() {
         id: "upd-" + task._id,
         op: "update",
         serverId: task._id,
-        clienteId: task.clienteId,
+        clientId: task.clientId, // ← CORREGIDO: clienteId → clientId
         data: { status: newStatus },
         ts: Date.now(),
       });
